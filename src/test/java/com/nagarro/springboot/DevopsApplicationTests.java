@@ -1,13 +1,24 @@
 package com.nagarro.springboot;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import com.nagarro.springboot.controller.NameController;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@SpringBootTest
+
+@ExtendWith(MockitoExtension.class)
 class DevopsApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	@InjectMocks
+    private NameController nameController;
+
+    @Test
+    public void testDemoReply() {
+        String expected = "Ayush Tyagi";
+        String actual = nameController.getName();
+        assertEquals(expected, actual);
+    }
 
 }
